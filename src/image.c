@@ -243,11 +243,13 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
     for(i = 0; i < num; ++i){
         char labelstr[4096] = {0};
         int class = -1;
+        float prob = 0.f;
         for(j = 0; j < classes; ++j){
             if (dets[i].prob[j] > thresh){
                 if (class < 0) {
                     strcat(labelstr, names[j]);
                     class = j;
+                    prob = dets[i].prob[j];
                 } else {
                     strcat(labelstr, ", ");
                     strcat(labelstr, names[j]);
@@ -265,7 +267,7 @@ void draw_detections(image im, detection *dets, int num, float thresh, char **na
                }
              */
 
-            //printf("%d %s: %.0f%%\n", i, names[class], prob*100);
+            printf("%d %s: %.0f%%\n", i, names[class], prob*100);
             int offset = class*123457 % classes;
             float red = get_color(2,offset,classes);
             float green = get_color(1,offset,classes);

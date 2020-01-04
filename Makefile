@@ -1,6 +1,6 @@
-GPU=0
-CUDNN=0
-OPENCV=0
+GPU=1
+CUDNN=1
+OPENCV=1
 OPENMP=0
 DEBUG=0
 
@@ -21,7 +21,7 @@ OBJDIR=./obj/
 
 CC=gcc
 CPP=g++
-NVCC=nvcc 
+NVCC=/usr/local/cuda/bin/nvcc
 AR=ar
 ARFLAGS=rcs
 OPTS=-Ofast
